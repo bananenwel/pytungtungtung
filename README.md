@@ -1,5 +1,6 @@
 # pytungtungtung
-my projects
-meine Projekte
-my balls
-meine Eier
+my python projects
+
+me is beginner
+
+it so cold
