@@ -19,9 +19,7 @@ def returnPlayer(turn, playerSymbols) -> str:
         return playerSymbols.get(turn % 2, 'O')
 
 def returnTie(occupied) -> bool:
-    if len(occupied) == 9:
-        return True
-    return False
+    return len(occupied) == 9
 
 def customPlayerSymbols() -> dict:
     return {k: v for k in range(2) if len((v := input(f'Enter custom symbol, Player {k + 1}\n> '))) == 1}
