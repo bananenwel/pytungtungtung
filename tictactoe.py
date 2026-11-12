@@ -14,9 +14,9 @@ def checkWin(board, winningBoards) -> str:
 
 def returnPlayer(turn, playerSymbols) -> str:
     if turn % 2 == 0:
-        return playerSymbols.get(turn % 2, 'X')
+        return playerSymbols.get(0, 'X')
     else:
-        return playerSymbols.get(turn % 2, 'O')
+        return playerSymbols.get(1, 'O')
 
 def returnTie(occupied) -> bool:
     return len(occupied) == 9
@@ -52,7 +52,6 @@ Type 'q' to quit.
     print()
     while True:
         cPlayer = returnPlayer(turn, playerSymbols)
-        turn += 1
         print('Turn: ', turn)
         print(f'{cPlayer}, 1-9')
         displayBoard(board)
@@ -63,17 +62,17 @@ Type 'q' to quit.
             if choice not in occupied:
                 board[int(choice) - 1] = cPlayer
                 occupied.add(choice)
+                turn+=1
                 if checkWin(board, winningBoards) == cPlayer:
                     print('Turn: ', turn + 1)
                     print(f'Player {cPlayer} wins!')
                     displayBoard(board)
                     break
-                elif returnTie(occupied) == True:
+                elif turn == 9:
                     print('Turn: ', turn + 1)
                     print("It's a tie.")
                     displayBoard(board)
                     break
-                else: continue
             else:
                 print(f'Square {choice} occupied with {board[int(choice) - 1]}')
                 turn -= 1
